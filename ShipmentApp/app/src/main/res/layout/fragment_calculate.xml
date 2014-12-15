@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#afeeee"
+    android:background="#40e0d0"
     android:orientation="vertical"
     tools:context="com.android.navigationdrawer.MainActivity$HomeFragment" >
 
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:layout_margin="5dp"
-            android:background="#defb9a"
+            android:background="#b2f2ec"
             android:text="Add"
             android:drawableLeft="@android:drawable/ic_input_add" />
 
@@ -78,7 +78,7 @@
         android:id="@+id/cal_listView"
         android:layout_width="fill_parent"
 
-        android:layout_height="320dp"
+        android:layout_height="300dp"
 
         tools:listitem="@layout/list_item_calculate"
         android:layout_below="@+id/EnterItems_addAtomItem"
@@ -89,18 +89,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/calculate_cal_btn"
-            android:layout_width="0sp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_margin="5dp"
-            android:background="#ff8d00"
-            android:text="Calculate"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
 
         <TextView
             android:id="@+id/textViewCal_total"
@@ -108,18 +98,17 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Total : "
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Total Cost : " />
 
         <TextView
-            android:id="@+id/cal_total"
+            android:id="@+id/cal_total_cost"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/EnterItem_TextView_ZeroValue"
             android:textStyle="bold"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <TextView
             android:id="@+id/textView_Baht"
@@ -127,8 +116,69 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Baht"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:text="Baht" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/textViewCal_total_weight"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Total Weight : " />
+
+        <TextView
+            android:id="@+id/cal_total_weight"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/EnterItem_TextView_ZeroValue"
+            android:textStyle="bold"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+            android:id="@+id/textView_Baht2"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Baht" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="#ffffff"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/calculate_cal_btn"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="#207068"
+            android:text="Calculate"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
 
     </LinearLayout>
 

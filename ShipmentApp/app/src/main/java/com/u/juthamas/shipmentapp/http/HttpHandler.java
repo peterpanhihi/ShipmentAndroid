@@ -3,7 +3,8 @@ package com.u.juthamas.shipmentapp.http;
 import org.apache.http.client.methods.HttpUriRequest;
 
 /**
- * Created by tanawat on 12/3/14 AD.
+ * HttpHandler is basically a process that runs in response to a request made to an ASP.NET Web application.
+ * @author Juthamas and Suwijak
  */
 public abstract class HttpHandler {
     public abstract HttpUriRequest getHttpRequestMethod();

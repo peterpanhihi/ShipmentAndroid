@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#40e0d0">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10dp">
+
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_ID"
-            android:layout_width="wrap_content"
+            android:layout_width="0sp"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
             android:text="Shipment's ID  "
             android:textStyle="bold"
-            android:textSize="32sp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textSize="25sp"/>
 
         <TextView
             android:id="@+id/SD_ID"
-            android:layout_width="wrap_content"
+            android:layout_width="0sp"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@string/EnterItem_TextView_ZeroValue"
             android:textStyle="bold"
             android:textSize="32sp"
@@ -34,15 +43,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_status"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Status : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -51,23 +61,23 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_create_time"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Created time : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -76,23 +86,98 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewSD_pack_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Packed time : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_pack_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewSD_sending_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Sending time : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_sending_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewSD_received_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Received time : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_received_time"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_type"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Type : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -101,73 +186,123 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_Courier"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="Courier : "
+            android:text="Courier's name : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/SD_courier"
+            android:id="@+id/SD_courier_name"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
-            android:id="@+id/textViewSD_receiver"
+            android:id="@+id/textViewSD_Courier_address"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Courier's address : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_courier_address"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Receiver : "
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/SD_receiver"
-            android:layout_width="0sp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewSD_receiver_name"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Receiver's name : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_receiver_name"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewSD_receiver_address"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:text="Receiver address : "
+            android:layout_marginLeft="5dp"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/SD_receiver_address"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="-" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_total_weight"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Total weight : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -176,23 +311,23 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#c5f5f0">
 
         <TextView
             android:id="@+id/textViewSD_total_cost"
             android:layout_width="0sp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Total cost : "
+            android:layout_marginLeft="5dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -201,9 +336,61 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="....."
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="-" />
 
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#c5f5f0">
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Item's name"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:text="Weight"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/textViewQtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:text="Quantity"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/listview_items"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="#c5f5f0"
+        android:layout_marginBottom="5dp"/>
+
+        <Button
+            android:id="@+id/shipment_delete"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#ff779b"
+            android:text="DELETE"
+            android:textColor="#ffffff"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+    </LinearLayout>
+
+</ScrollView>

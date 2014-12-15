@@ -21,6 +21,10 @@ import com.u.juthamas.shipmentapp.http.HttpHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 
+/**
+ * MainActivity to run android application.
+ * @author Juthamas
+ */
 public class MainActivity extends Activity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -86,9 +90,6 @@ public class MainActivity extends Activity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
-                break;
-            case 5:
-                mTitle = getString(R.string.title_section5);
                 break;
         }
     }
@@ -169,6 +170,7 @@ public class MainActivity extends Activity
                 public void onClick(View v) {
                     final String txt = editID.getText().toString();
                     final AlertDialog.Builder dDialog = new AlertDialog.Builder(getActivity());
+                    editID.setText("");
                     if(!txt.isEmpty()){
                         new HttpHandler(){
                             @Override
@@ -182,9 +184,15 @@ public class MainActivity extends Activity
                             @Override
                             public void onResponse(String result) {
 //                                Toast.makeText(getActivity(), result, Toast.LENGTH_LONG).show();
-                                dDialog.setTitle("Get response");
+                                dDialog.setTitle("Shipment's Status");
                                 dDialog.setIcon(android.R.drawable.ic_dialog_info);
-                                dDialog.setMessage(result);
+                                if(result.contains("<status>")){
+                                    result = result.substring(result.indexOf("<status>") + 8 , result.indexOf("</status>"));
+                                    dDialog.setMessage("Status : " + result);
+                                }
+                                else {
+                                    dDialog.setMessage("Not Found");
+                                }
                                 dDialog.setPositiveButton("Close",null);
                                 dDialog.show();
                             }

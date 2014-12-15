@@ -4,6 +4,10 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+/**
+ * ShipmentConstant contains accessToken, xml.
+ * @author Juthamas
+ */
 public class ShipmentConstant {
 
     private String xml;
@@ -24,14 +28,16 @@ public class ShipmentConstant {
         return shipment;
     }
 
-    public void createShipmentXML(ArrayList<AtomItem> items, String[] sender, String[] receiver){
+    public void createShipmentXML(ArrayList<AtomItem> items, String[] sender, String[] receiver, String type){
         xml ="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\" ?>";
         xml += "<shipment>";
         xml += "<courier_name>" + sender[0] + "</courier_name>";
         xml += "<courier_address>" + sender[1] + "</courier_address>";
-        xml += "<recieve_name>" + receiver[0] + "</recieve_name>";
-        xml += "<recieve_address>" + receiver[1] + "</recieve_address>";
-        xml += "<type>EMS</type>";
+        xml += "<receive_name>" + receiver[0] + "</receive_name>";
+        xml += "<receive_address>" + receiver[1] + "</receive_address>";
+        xml += "<type>" + type;
+        xml += "</type>";
+        xml += "<items>";
         for(int i = 0 ; i < items.size(); i++){
             xml += "<item>";
             xml += "<name>" + items.get(i).getName() +"</name>";
@@ -39,12 +45,15 @@ public class ShipmentConstant {
             xml += "<quantity>" + items.get(i).getQuantity() +"</quantity>";
             xml += "</item>";
         }
+        xml += "</items>";
         xml += "</shipment>";
+
+        Log.d("show create xml",xml);
     }
 
-    public void calculateXML(ArrayList<AtomItem> items){
+    public void calculateXML(ArrayList<AtomItem> items, String type){
         xml = "<shipment>";
-        xml += "<type>weight</type>";
+        xml += "<type>" + type + "</type>";
         xml += "<items>";
         for(int i = 0 ; i < items.size(); i++){
             xml += "<item>";

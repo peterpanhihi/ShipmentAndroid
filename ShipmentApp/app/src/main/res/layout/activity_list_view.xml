@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ListViewActivity"
-    android:background="#ffc3a0">
+    android:background="#40e0d0">
 
 
 
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentTop="true"
-            android:background="#defb9a"
+            android:background="#b2f2ec"
             android:layout_margin="10dp"
             android:text="@string/EnterItem_addItem"
             android:drawableLeft="@android:drawable/ic_input_add" />
@@ -54,7 +54,6 @@
                 android:text="Quantity"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
         </LinearLayout>
 
 
@@ -80,7 +79,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#00cdcd"
+            android:background="#207068"
             android:text="Next"
             android:textColor="#ffffff"
             android:textAppearance="?android:attr/textAppearanceLarge" />

@@ -9,6 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Adapter class of NavigationDrawerFragment.
+ * @author Juthamas
+ */
 public class MyDrawerAdapter extends BaseAdapter {
 
     private Context context;

@@ -12,7 +12,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
+/**
+ * AsyncHttpTask is a helper class around Thread and Handler and does not constitute a generic threading framework.
+ *
+ * @author Juthamas and Suwijak
+ */
 public class AsyncHttpTask extends AsyncTask<String, Void, String> {
     private HttpHandler httpHandler;
 

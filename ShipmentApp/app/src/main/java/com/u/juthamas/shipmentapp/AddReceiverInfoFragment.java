@@ -1,14 +1,18 @@
 package com.u.juthamas.shipmentapp;
 
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.u.juthamas.shipmentapp.http.HttpHandler;
@@ -19,7 +23,12 @@ import org.apache.http.entity.StringEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * AddReceiverInfoFragment add receiver's information to the shipment.
+ * @author Juthamas
+ */
 public class AddReceiverInfoFragment extends Fragment{
     private View rootView;
     private ArrayList<AtomItem>items;
@@ -58,13 +67,27 @@ public class AddReceiverInfoFragment extends Fragment{
         final EditText zip = (EditText)rootView.findViewById(R.id.receiver_Zip);
         final EditText country = (EditText)rootView.findViewById(R.id.receiver_Country);
 
+        final Spinner spin = (Spinner) rootView.findViewById(R.id.spinnerType_created);
+
+        final List<String> type = new ArrayList<String>();
+        type.add("common");
+        type.add("EMS");
+
+        ArrayAdapter<String> arrAd = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item,
+                type);
+
+        spin.setAdapter(arrAd);
+
         rootView.findViewById(R.id.finish_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String[] receiver = {name.getText().toString(),address.getText().toString()+" "+city.getText().toString()+" "+zip.getText().toString()+" "+country.getText().toString()};
 
                 final ShipmentConstant shipment = ShipmentConstant.getInstance();
-                shipment.createShipmentXML(items, sender, receiver);
+                shipment.createShipmentXML(items, sender, receiver, String.valueOf(spin.getSelectedItem()));
+
+                final AlertDialog.Builder dDialog = new AlertDialog.Builder(getActivity());
 
                 new HttpHandler() {
                     @Override
@@ -83,15 +106,17 @@ public class AddReceiverInfoFragment extends Fragment{
                             e.printStackTrace();
                         }
                         return httpPost;
-
-//                        return new HttpGet("http://www.google.com");
-
                     }
 
                     @Override
                     public void onResponse(String result) {
                         Log.d("Log Response",result);
-                        Toast.makeText(getActivity() , "Shipment is created!", Toast.LENGTH_SHORT).show();
+
+                        dDialog.setTitle("Create Shipment");
+                        dDialog.setIcon(android.R.drawable.ic_dialog_info);
+                        dDialog.setMessage("Status : created");
+                        dDialog.setPositiveButton("Close",null);
+                        dDialog.show();
                     }
                 }.execute();
 
@@ -102,5 +127,25 @@ public class AddReceiverInfoFragment extends Fragment{
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, AddSenderInfoFragment.newInstance(items))
+                            .commit();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 }

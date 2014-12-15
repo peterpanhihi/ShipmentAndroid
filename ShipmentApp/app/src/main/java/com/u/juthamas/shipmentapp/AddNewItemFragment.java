@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * AddNewItemFragment create new Item to the shipment.
+ * @author Juthamas
+ */
 public class AddNewItemFragment extends Fragment {
     protected AtomItemListAdapter adapter;
     private View rootView;
@@ -42,8 +46,6 @@ public class AddNewItemFragment extends Fragment {
         setupListViewAdapter();
 
         setupAddItemButton();
-
-        adapter.insert(new AtomItem("", 0,0), 0);
 
         return rootView;
     }
@@ -80,6 +82,26 @@ public class AddNewItemFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, MainActivity.PlaceholderFragment.newInstance(0))
+                            .commit();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
 
     private class AtomItemListAdapter extends ArrayAdapter<AtomItem> {
 
@@ -88,6 +110,7 @@ public class AddNewItemFragment extends Fragment {
         private List<AtomItem> items;
         private int layoutResourceId;
         private Context context;
+        private AtomCreateHolder holder;
 
         public AtomItemListAdapter(Context context, int layoutResourceId, List<AtomItem> items) {
             super(context, layoutResourceId, items);
@@ -99,19 +122,18 @@ public class AddNewItemFragment extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View row = convertView;
-            AtomPaymentHolder holder = null;
 
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             row = inflater.inflate(layoutResourceId, parent, false);
 
-            holder = new AtomPaymentHolder();
+            holder = new AtomCreateHolder();
             holder.atomItem = items.get(position);
             holder.removeItemButton = (ImageButton)row.findViewById(R.id.atomItem_removePay);
             holder.removeItemButton.setTag(holder.atomItem);
             holder.removeItemButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AtomItem itemToRemove = (AtomItem)v.getTag();
+                    AtomItem itemToRemove = (AtomItem) v.getTag();
                     adapter.remove(itemToRemove);
                 }
             });
@@ -127,16 +149,17 @@ public class AddNewItemFragment extends Fragment {
             row.setTag(holder);
 
             setupItem(holder);
+
             return row;
         }
 
-        private void setupItem(AtomPaymentHolder holder) {
+        private void setupItem(final AtomCreateHolder holder) {
             holder.name.setText(holder.atomItem.getName());
             holder.weight.setText(String.valueOf(holder.atomItem.getWeight()));
             holder.qtn.setText(String.valueOf(holder.atomItem.getQuantity()));
         }
 
-        public class AtomPaymentHolder {
+        public class AtomCreateHolder {
             AtomItem atomItem;
             TextView name;
             TextView weight;
@@ -144,7 +167,7 @@ public class AddNewItemFragment extends Fragment {
             ImageButton removeItemButton;
         }
 
-        private void setNameTextChangeListener(final AtomPaymentHolder holder) {
+        private void setNameTextChangeListener(final AtomCreateHolder holder) {
             holder.name.addTextChangedListener(new TextWatcher() {
 
                 @Override
@@ -160,27 +183,29 @@ public class AddNewItemFragment extends Fragment {
             });
         }
 
-        private void setWeightTextListeners(final AtomPaymentHolder holder) {
+        private void setWeightTextListeners(final AtomCreateHolder holder) {
             holder.weight.addTextChangedListener(new TextWatcher() {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    try{
+                    try {
                         holder.atomItem.setWeight(Double.parseDouble(s.toString()));
-                    }catch (NumberFormatException e) {
+                    } catch (NumberFormatException e) {
                         Log.e(LOG_TAG, "error reading double value: " + s.toString());
                     }
                 }
 
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
                 @Override
-                public void afterTextChanged(Editable s) { }
+                public void afterTextChanged(Editable s) {
+                }
             });
         }
 
-        private void setQtnTextListeners(final AtomPaymentHolder holder) {
+        private void setQtnTextListeners(final AtomCreateHolder holder) {
             holder.qtn.addTextChangedListener(new TextWatcher() {
 
                 @Override

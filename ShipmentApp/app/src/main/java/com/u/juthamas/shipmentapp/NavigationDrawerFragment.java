@@ -108,35 +108,30 @@ public class NavigationDrawerFragment extends Fragment {
                     images[1] = R.drawable.create_white;
                     images[2] = R.drawable.list_white;
                     images[3] = R.drawable.calculator_white;
-                    images[4] = R.drawable.logout_white;
                 }
                 else if(position == 1){
                     images[0] = R.drawable.send_white;
                     images[1] = R.drawable.icon_create;
                     images[2] = R.drawable.list_white;
                     images[3] = R.drawable.calculator_white;
-                    images[4] = R.drawable.logout_white;
                 }
                 else if(position == 2){
                     images[0] = R.drawable.send_white;
                     images[1] = R.drawable.create_white;
                     images[2] = R.drawable.icon_list;
                     images[3] = R.drawable.calculator_white;
-                    images[4] = R.drawable.logout_white;
                 }
                 else if(position == 3){
                     images[0] = R.drawable.send_white;
                     images[1] = R.drawable.create_white;
                     images[2] = R.drawable.list_white;
                     images[3] = R.drawable.icon_calculator;
-                    images[4] = R.drawable.logout_white;
                 }
                 else if(position == 4){
                     images[0] = R.drawable.send_white;
                     images[1] = R.drawable.create_white;
                     images[2] = R.drawable.list_white;
                     images[3] = R.drawable.calculator_white;
-                    images[4] = R.drawable.icon_logout;
                 }
                 selectedposition[0] = position;
                 mMyDrawerAdapter.notifyDataSetChanged();
@@ -149,13 +144,12 @@ public class NavigationDrawerFragment extends Fragment {
                 getString(R.string.title_section2),
                 getString(R.string.title_section3),
                 getString(R.string.title_section4),
-                getString(R.string.title_section5),
         };
         images = new int[]{R.drawable.icon_send,
                 R.drawable.create_white,
                 R.drawable.list_white,
-                R.drawable.calculator_white,
-                R.drawable.logout_white};
+                R.drawable.calculator_white
+        };
 
         selectedposition = new int[]{mCurrentSelectedPosition};
         mMyDrawerAdapter = new MyDrawerAdapter(getActionBar().getThemedContext(),
@@ -317,6 +311,7 @@ public class NavigationDrawerFragment extends Fragment {
             if(shipment.isLogin()){
 
                 item.setTitle("LOG IN");
+                shipment.setAccessToken("");
                 shipment.setLogin(false);
             } else {
                 Intent newActivity = new Intent(getActivity(), LoginActivity.class);

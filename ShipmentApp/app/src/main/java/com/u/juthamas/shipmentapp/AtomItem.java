@@ -2,6 +2,10 @@ package com.u.juthamas.shipmentapp;
 
 import java.io.Serializable;
 
+/**
+ * AtomItem is a item of each shipment.
+ * @author Juthamas
+ */
 public class AtomItem implements Serializable {
     private static final long serialVersionUID = -5435670920302756945L;
 

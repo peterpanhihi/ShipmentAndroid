@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+/**
+ * LoginActivity authorize to the service.
+ * @author Juthamas
+ */
 public class LoginActivity extends Activity{
 
     private String accessToken;
@@ -86,6 +90,12 @@ public class LoginActivity extends Activity{
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }
 

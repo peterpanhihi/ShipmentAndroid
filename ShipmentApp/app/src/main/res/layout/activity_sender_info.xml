@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff3a0">
+    android:background="#40e0d0">
 
     <TextView
         android:id="@+id/textViewSender"
@@ -101,7 +101,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#00cdcd"
+                android:background="#207068"
                 android:layout_weight="1"
                 android:text="Next"
                 android:textColor="#ffffff"

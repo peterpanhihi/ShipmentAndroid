@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c3a0ff">
+    android:background="#40e0d0">
 
     <TextView
         android:id="@+id/textViewReceiver"
@@ -76,6 +76,23 @@
         android:hint="Country"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <TextView
+        android:id="@+id/textViewType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Type of shipping"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerType_created"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:layout_margin="10dp"
+        android:gravity="center_vertical"
+        android:background="#ffffff" />
+
     <RelativeLayout android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="bottom">
@@ -101,7 +118,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:background="#00cdcd"
+                android:background="#207068"
                 android:layout_weight="1"
                 android:text="Finish"
                 android:textColor="#ffffff"
