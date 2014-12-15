@@ -30,16 +30,25 @@ import java.util.List;
  * @author Juthamas
  */
 public class AddReceiverInfoFragment extends Fragment{
+    private static final String LIST_KEY = "list_key";
+    private static final String SENDER_KEY = "sender_key";
     private View rootView;
     private ArrayList<AtomItem>items;
     private String[] sender;
 
+    public AddReceiverInfoFragment() {}
+
     public static AddReceiverInfoFragment newInstance(ArrayList<AtomItem> list, String[] sender){
-        AddReceiverInfoFragment receiver = new AddReceiverInfoFragment(list,sender);
+        AddReceiverInfoFragment receiver = new AddReceiverInfoFragment();
+        receiver.setArguments(list,sender);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable(LIST_KEY, list);
+//        bundle.putSerializable(SENDER_KEY,sender);
+//        receiver.setArguments(bundle);
         return receiver;
     }
 
-    public AddReceiverInfoFragment(ArrayList<AtomItem> list, String[] sender) {
+    public void setArguments(ArrayList<AtomItem> list, String[] sender) {
         this.items = list;
         this.sender = sender;
     }

@@ -2,7 +2,6 @@ package com.u.juthamas.shipmentapp;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -18,19 +17,24 @@ import java.util.ArrayList;
  */
 
 public class AddSenderInfoFragment extends Fragment {
-    private Intent newActivity;
+    private static final String LIST_KEY = "list_key";
     private View rootView;
     private ArrayList<AtomItem> items;
 
     public static AddSenderInfoFragment newInstance(ArrayList<AtomItem> list){
-        AddSenderInfoFragment send = new AddSenderInfoFragment(list);
+        AddSenderInfoFragment send = new AddSenderInfoFragment();
+        send.setArguments(list);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(LIST_KEY, list);
+        send.setArguments(bundle);
         return send;
     }
 
-    public AddSenderInfoFragment(ArrayList<AtomItem> list){
+    public AddSenderInfoFragment(){}
+
+    public void setArguments(ArrayList<AtomItem> list) {
         items = list;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.activity_sender_info, container, false);

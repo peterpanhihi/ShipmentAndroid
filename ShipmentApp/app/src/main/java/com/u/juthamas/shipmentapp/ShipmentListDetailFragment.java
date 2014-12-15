@@ -39,11 +39,14 @@ public class ShipmentListDetailFragment extends Fragment{
     private Shipment shipment;
 
     public static ShipmentListDetailFragment newInstance(int position){
-        ShipmentListDetailFragment detail = new ShipmentListDetailFragment(position);
+        ShipmentListDetailFragment detail = new ShipmentListDetailFragment();
+        detail.setArguments(position);
         return detail;
     }
 
-    public ShipmentListDetailFragment(int position) {
+    public ShipmentListDetailFragment() {}
+
+    public void setArguments(int position) {
         this.position = position;
     }
 
